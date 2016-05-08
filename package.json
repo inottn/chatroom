@@ -1,8 +1,8 @@
 {
-    "name": "chatrooms",　//包名称
-    "version": "0.0.1",
-    "description": "Minimalist multiroom chat server",
-    "dependencies": {   //包的依赖项
+    "name": "chatroom",
+    "version": "1.0.0",
+    "description": "chat server",
+    "dependencies": { 
         "socket.io": "~0.9.7",
         "mime": "~1.2.7"
     }
