@@ -2,29 +2,113 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Chat</title>
+	<title>Chat Room</title>
 	<link rel="stylesheet" href="./stylesheets/style.css" />
 </head>
 <body>
-	<div id="content">
-		<div id="room"></div>
-		<div id="room-list"></div>
-		<div id="messages"></div>
-		<form id="send-form">
-			<input id="send-message" type="text" />
-			<input id="send-button" type="submit" value="Send" />
-			<div id="help">
-				聊天命令:
-				<ul>
-					<li>更改昵称<code> /nick [user name]</code></li>
-					<li>加入or创建 房间<code> /join [room name]</code></li>
-					<li>清空消息<code> /clear</code></li>
-				</ul>
+	<div id="box" class="hide">
+		<header id="nav">
+    		<h1>南爸爸的聊天室</h1>
+    		<h2>测试版1.0 design by inottn</h2>
+		</header>
+		<div id="content">
+			<div id="room"></div>
+			<div id="room-list"></div>
+			<div id="messages"></div>
+			<form id="send-form">
+				<input id="send-message" type="text" />
+				<input id="send-button" type="submit" value="发送" />
+				<div id="help">
+					聊天命令:
+					<ul>
+						<li>更改昵称<code> /nick [user name]</code></li>
+						<li>加入or创建 房间<code> /join [room name]</code></li>
+						<li>清空消息<code> /clear</code></li>
+					</ul>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div id=cover_father>
+		<div id="cover_son">
+			<div id="cover_son_position">
+				<span id="close"></span>
+				<strong>欢迎来到南爸爸的聊天室</strong>
+				<div>聊天室由node编写</div>
+				<div>包的依赖项：</div>
+				<div>&nbsp;&nbsp;&nbsp;&nbsp;"dependencies": {</div>
+				<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"socket.io": "~0.9.7",</div>
+				<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mime": "~1.2.7"</div>
+				<div>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+				<div>已知问题：</div>
+				<div>&nbsp;&nbsp;&nbsp;&nbsp;房间过多时，房间列表中房间名显示重叠</div>
+				<div>&nbsp;&nbsp;&nbsp;&nbsp;房间名最好不要加空格，否则，否则你试试呗</div>
+				<div>&nbsp;&nbsp;&nbsp;&nbsp;我的电脑失去网络连接时，该聊天室会关闭『非代码问题』</div>
+				<div>参考资料：</div>
+				<div>&nbsp;&nbsp;《Node.js in Action》</div>
+				<div>&nbsp;&nbsp;&nbsp;&nbsp;Marc Harter 著</div>
+				<div>&nbsp;&nbsp;&nbsp;&nbsp;人民邮电出版社 出版</div>
 			</div>
-		</form>
+		</div>
 	</div>
 	<script src='/socket.io/socket.io.js'></script>	
 	<script src='/javascript/jQuery.js'></script>	
 	<script src='/javascript/chat.js'></script>
 	<script src='/javascript/chat_ui.js'></script>
+	<script>
+		var box=document.getElementById("box");
+		var cover_father=document.getElementById("cover_father");
+		var cover_son=document.getElementById("cover_son");
+		var close=document.getElementById("close");
+		cover_father.style.width=window.innerWidth+"px";
+		cover_father.style.height=window.innerHeight+"px";
+		cover_son.addEventListener("click",function(e){
+		    e.stopPropagation();
+		})
+		cover_father.addEventListener("click",function(){
+			box.style.display="block";
+			setTimeout(function(){
+				box.className="show";
+			},800);
+			cover_father.className="hide";
+			setTimeout(function(){
+				cover_father.style.display="none";
+			},2000);
+		});
+		close.addEventListener("click",function(){
+			box.style.display="block";
+			setTimeout(function(){
+				box.className="show";
+			},800);
+			cover_father.className="hide";
+			setTimeout(function(){
+				cover_father.style.display="none";
+			},2000);
+		});
+		
+		var isMobile = {
+    		Android : function() {
+        		return navigator.userAgent.match(/Android/i) ? true : false;
+    		},
+    		BlackBerry : function() {
+    			return navigator.userAgent.match(/BlackBerry/i) ? true : false;
+    		},
+    		iOS : function() {
+    	    	return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
+    		},
+    		Windows : function() {
+    	    	return navigator.userAgent.match(/IEMobile/i) ? true : false;
+    		},
+    		any : function() {
+    	    	return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+    		}
+		};
+		if(isMobile.Android()){
+			alert("您当前使用Android手机，聊天室可能无法完全显示，建议您在PC端访问。");
+		}else if(isMobile.iOS()){
+			alert("您当前使用iphone手机，聊天室可能无法完全显示，建议您在PC端访问。");
+		}else if(isMobile.BlackBerry()){
+			alert("您当前使用黑莓手机，聊天室可能无法完全显示，建议您在PC端访问。");
+		}
+	</script>
 </body>	

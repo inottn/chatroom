@@ -2,6 +2,10 @@ function divEscapedContentElement(message) {
 	return $('<div></div>').text(message);
 }
 
+function divEscapedRoomElement(room) {
+	return $('<div title="'+room+'"></div>').text(room);
+}
+
 function divSystemContentElement(message) {
 	return $('<div></div>').html('<span style="color:#FC6060">' + message + '</span>');
 }
@@ -47,7 +51,7 @@ $(document).ready(function() {
 		for(var room in rooms) {
 			room = room.substring(1, room.length);
 			if (room != '') {
-				$('#room-list').append(divEscapedContentElement(room));
+				$('#room-list').append(divEscapedRoomElement(room));
 			}
  		}
 		$('#room-list div').click(function() {	//点击房间名可以换到那个房间中

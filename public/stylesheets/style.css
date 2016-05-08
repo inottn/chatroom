@@ -1,9 +1,39 @@
+*{
+	padding: 0;
+	margin: 0;
+	font-family: 微软雅黑;
+}
 body{
-	padding:50px;
 	font-size:14px;
+	
 }
 a{
 	color:#00B7FF;
+}
+#nav{
+	width: 600px;
+	margin: 50px auto 30px;
+	padding: 5px 0 30px 0;
+	font-size: 25px;
+	border-bottom: 1px solid #AAA;
+	text-align: center;
+	animation: jump 1s;
+	-webkit-animation: jump 1s;
+	-moz-animation: jump 1s;
+	-ms-animation: jump 1s;
+	-o-animation: jump 1s;
+}
+#nav h1{
+	font-weight: normal;
+	padding-bottom: 10px;
+	font-size: 150%;
+}
+#nav h2{
+	font-weight: normal;
+	font-size: 70%;
+}
+#box{
+	display: none;
 }
 #content{
 	width:800px;
@@ -11,11 +41,12 @@ a{
 }
 #room{
 	background:#DDD;
-	font-size: 20px;
+	font-size: 18px;
 	margin-bottom:1em;
-	height:30px;
-	line-height: 30px;
-	padding-left: 6px;
+	height:40px;
+	line-height: 40px;
+	padding-left: 12px;
+	border-radius: 5px;
 }
 #messages{
 	width:690px;
@@ -24,9 +55,11 @@ a{
 	background:#EEE;
 	margin-bottom:1em;
 	margin-right:10px;
+	border-radius: 5px;
+	padding-bottom: 8px;
 }
 #messages div{
-	padding: 5px 0 0 4px;
+	padding: 5px 0 0 12px;
 }
 #room-list{
 	float: right;
@@ -36,8 +69,11 @@ a{
 }
 #room-list div{
 	border-bottom: 1px solid #eee;
-	height: 20px;
-	line-height: 20px;
+	height: 25px;
+	line-height: 25px;
+	padding-left: 5px;
+	overflow: hidden;
+	text-overflow:ellipsis;
 }
 
 #room-list div:hover {
@@ -47,17 +83,77 @@ a{
 	width: 50%;
 	margin-bottom: 1em;
 	margin-right: 1em;
+	padding: 2px 0 3px 4px;
 	border: 1px solid #A9A9A9;
-	height: 20px;
+	height: 18px;
 }
 #send-message:focus{
 	outline: none;
 	border: 1px solid #0099D2;
 }
+#send-button{
+	padding: 1px 3px;
+}
 #help{
-	font: 10px "Lucida Grande", Helvetica, Arial, sans-serif;
+	font-size: 10px;
+}
+#help ul{
+	margin-top: 6px;
 }
 #help ul li{
 	list-style: none;
 	margin-bottom: 2px;
+	padding-left: 30px
+}
+#cover_father{
+	background-color: #EAF0F7;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+#cover_son{
+	width: 600px;
+	height: 410px;
+	box-shadow: 0 0 15px rgba(60,60,60,0.3);
+	background-color: #FFF;
+	border-radius: 5px;
+	padding: 20px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -320px;
+	margin-top: -240px;
+}
+#cover_son strong{
+	font-size: 22px;
+	padding-bottom: 6px;
+	display: block;
+}
+#cover_son div{
+	font-size: 18px;
+	padding-bottom: 3px;
+}
+#cover_son_position{
+	position: relative;
+}
+#close{
+	background-image: url(../close.png);
+	background-size: 63px 42px;
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	display: block;
+	width: 21px;
+	height: 21px;
+}
+#close:hover{
+	background-position: 21px 0;
+}
+.hide{
+	opacity: 0;
+	transition: all .8s;
+}
+.show{
+	opacity: 1;
+	transition: all .8s;
 }
