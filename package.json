@@ -2,9 +2,5 @@
     "name": "chatroom",
     "version": "1.0.0",
     "description": "chat server",
-    "main": "./index.js",
-    "dependencies": { 
-        "socket.io": "0.9.7",
-        "mime": "1.2.7"
-    }
+    "main": "./index.js"
 }
